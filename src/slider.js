@@ -62,10 +62,10 @@ const navigation = document.querySelector(".navigation");
       createInterval();
       return;
     }
-    e.preventDefault(); // for touchscreen defaults
+    // e.preventDefault(); // for touchscreen defaults
 
     // sliding animation
-    slidesFlex.style.transition = "2s";
+    slidesFlex.style.transition = "0.8s";
     // container.style.cursor = "grabbing";
     // document.body.style.cursor = "grabbing";
 
