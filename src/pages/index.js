@@ -1,4 +1,6 @@
+import "../theme.js";
 import "../sidebar.js";
+import "../slider.js";
 
 // const key = "b8153e3c30f5a9478f55d8ab9c8ddff9";
 // const readAccess =

@@ -15,6 +15,12 @@
   --accentColor: #be123c;
   --primaryTextColor: black;
   --secondaryTextColor: #9ca3af;
+  --navigationFontSize: 0.8rem;
+  --activeNavigationFontSize: 1.1rem;
+}
+.dark-theme {
+  --mainBackground: rgb(6, 6, 15);
+  --primaryTextColor: rgb(248, 244, 244);
 }
 body {
   font-family: var(--primaryFontFamily);
@@ -107,6 +113,7 @@ form .fa-magnifying-glass {
 .toggle-sidebar:active {
   background: #d58196;
 }
+/* SIDEBAR */
 aside {
   background: var(--mainBackground);
   color: var(--primaryTextColor);
@@ -114,8 +121,7 @@ aside {
   top: 0;
   left: 0;
   width: 14.2rem;
-  /* border-right: 1px solid var(--primaryTextColor); */
-  box-shadow: 0 0 2px 0px var(--primaryTextColor);
+  box-shadow: 0px 0px 3px 0px rgb(49, 48, 48);
   height: 100%;
   border-radius: 0 2em 2em 0;
   padding: 1rem 0;
@@ -127,6 +133,11 @@ aside {
   transition: transform 0.2s linear;
   transform: translateX(-100%);
 }
+@media(max-height: 550px){
+  aside{
+    overflow-y: scroll;
+  }
+}
 .show-sidebar {
   transform: translateX(0%);
 }
@@ -134,7 +145,9 @@ aside .logo {
   gap: 0.8rem;
 }
 aside ul {
+  position: relative;
   width: 100%;
+  min-height: 25rem;
   display: flex;
   flex-direction: column;
 }
@@ -152,7 +165,7 @@ aside svg {
 }
 .theme {
   position: absolute;
-  bottom: 10%;
+  bottom: 0;
   padding: 0 1rem;
 }
 .theme-toggle input {
@@ -164,8 +177,8 @@ aside svg {
   cursor: pointer;
   justify-content: left;
   align-items: center;
-  width: 2.5rem;
-  height: 1.3rem;
+  width: 37px;
+  height: 23px;
   border-radius: 5rem;
   background: #666;
   padding: 0rem 0.1rem;
@@ -173,8 +186,8 @@ aside svg {
 .ball {
   position: absolute;
   border: 1px solid;
-  height: 1.1rem;
-  width: 1.1rem;
+  height: 19px;
+  width: 19px;
   border: none;
   border-radius: 50%;
   transition: transform 0.1s linear;
@@ -184,37 +197,58 @@ aside svg {
   background: #be123c;
 }
 .theme-toggle input:checked ~ label .ball {
-  transform: translateX(1.15rem);
+  transform: translateX(1.03rem);
 }
-aside ul li:hover{
-   background: #be123d15;
-   border-right: 5px solid #be123c;
-   color: #be123c;
+aside ul li:hover {
+  background: #be123d15;
+  border-right: 5px solid #be123c;
+  color: #be123c;
 }
-aside ul li:hover svg{
-  color: rgb(48, 46, 46);
+aside ul li:hover svg {
+  color: #be123c;
 }
-.theme:hover{
+.theme:hover {
   background: inherit;
-   border-right: none;
-   color: inherit;
+  border-right: none;
+  color: inherit;
+}
+/* SLIDER */
+.slider-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/7.3;
+  overflow: hidden;
+}
+.slider-container input[type="radio"] {
+  display: none;
+}
+.slides-flex {
+  display: flex;
+  left: 0;
+  width: 500%;
+  height: 100%;
+  position: absolute;
+  transition: left 2s;
+}
+.slide {
+  width: 20%;
 }
 .movie-preview {
-  position: relative;
   background: url(./image/john-wick\ wallpaper.jpg);
   background-position: center center;
   background-repeat: none;
   background-size: cover;
-  background-color: grey;
+  background-color: rgb(132, 122, 122);
   background-blend-mode: multiply;
   color: white;
-  padding: 8rem var(--generalPadding);
+  padding: 9rem var(--generalPadding);
 }
 .preview-text {
   max-width: 35%;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  user-select: none;
 }
 .preview-text h1 {
   font-size: 3rem;
@@ -260,23 +294,23 @@ aside ul li:hover svg{
 .watch-btn:active {
   background: #d58196;
 }
-.silder {
+.navigation {
   position: absolute;
   top: 50%;
   right: 1rem;
-  transform: translateY(-50%);
+  /* transform: translateY(-10%); */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  transition: 0.8s;
 }
-.silder li {
-  font-size: 0.8rem;
+.navigation label {
+  font-size: var(--navigationFontSize);
   color: rgba(255, 255, 255, 0.555);
-}
-.silder .active {
-  font-size: 1.1rem;
-  color: white;
+  cursor: pointer;
+  transition: 0.1s;
+  user-select: none;
 }
 .indicator {
   height: 4px;
@@ -284,10 +318,64 @@ aside ul li:hover svg{
   background: white;
   border-radius: 0.5em;
   position: absolute;
+  transform: translateY(-50%);
   top: 50%;
   right: 2rem;
+}
+/* ON CHECKED */
+/* #radio1:checked ~ .slides-flex{
+  left: 0;
+}
+#radio2:checked ~ .slides-flex{
+  left: -100%;
+}
+#radio3:checked ~ .slides-flex{
+  left: -200%;
+}
+#radio4:checked ~ .slides-flex{
+  left: -300%;
+}
+#radio5:checked ~ .slides-flex{
+  left: -400%;
+}*/
+
+#radio1:checked ~ .navigation {
+  transform: translateY(-10%);
+}
+#radio2:checked ~ .navigation {
+  transform: translateY(-30%);
+}
+#radio3:checked ~ .navigation {
   transform: translateY(-50%);
 }
+#radio4:checked ~ .navigation {
+  transform: translateY(-70%);
+}
+#radio5:checked ~ .navigation {
+  transform: translateY(-90%);
+}
+
+#radio1:checked ~ .navigation .btn1 {
+  font-size: var(--activeNavigationFontSize);
+  color: white;
+}
+#radio2:checked ~ .navigation .btn2 {
+  font-size: var(--activeNavigationFontSize);
+  color: white;
+}
+#radio3:checked ~ .navigation .btn3 {
+  font-size: var(--activeNavigationFontSize);
+  color: white;
+}
+#radio4:checked ~ .navigation .btn4 {
+  font-size: var(--activeNavigationFontSize);
+  color: white;
+}
+#radio5:checked ~ .navigation .btn5 {
+  font-size: var(--activeNavigationFontSize);
+  color: white;
+}
+
 .top-rated {
   margin: 3rem 0;
   padding: 0 var(--generalPadding);
@@ -425,12 +513,21 @@ footer {
   color: var(--secondaryTextColor);
   font-weight: 600;
 }
-
+@media (max-width: 1100px) {
+  .slider-container {
+    aspect-ratio: 16/9;
+  }
+}
+@media (max-width: 1000px) {
+  .slider-container {
+    aspect-ratio: 16/10;
+  }
+}
 @media (max-width: 850px) {
   :root {
     --generalPadding: 1.5rem;
   }
-  .preview-text{
+  .preview-text {
     max-width: 50%;
   }
   form {
@@ -462,6 +559,13 @@ footer {
 }
 
 @media (max-width: 650px) {
+  :root {
+    --navigationFontSize: 0.7rem;
+    --activeNavigationFontSize: 1rem;
+  }
+  .slider-container {
+    aspect-ratio: 16/11;
+  }
   .logo {
     gap: 0.5rem;
   }
@@ -475,7 +579,7 @@ footer {
   .movie-preview {
     padding: 6rem var(--generalPadding);
   }
-  .preview-text{
+  .preview-text {
     max-width: 60%;
   }
   .preview-text h1 {
@@ -491,16 +595,15 @@ footer {
   .watch-btn {
     font-size: 0.7rem;
   }
-  .silder li {
-    font-size: 0.7rem;
-  }
-  .silder .active {
-    font-size: 1rem;
-  }
 }
 @media (max-width: 550px) {
   :root {
     --generalPadding: 1rem;
+    --navigationFontSize: 0.7rem;
+    --activeNavigationFontSize: 0.95rem;
+  }
+  .slider-container {
+    aspect-ratio: 16/14;
   }
   header {
     top: 1rem;
@@ -516,56 +619,54 @@ footer {
     gap: 1rem;
     row-gap: 2rem;
   }
-  .movie-card h3{
+  .movie-card h3 {
     font-size: 1rem;
   }
 }
 @media (max-width: 450px) {
   :root {
     --generalPadding: 1rem;
+    --navigationFontSize: 0.6rem;
+    --activeNavigationFontSize: 0.9rem;
   }
-  .logo{
+  .slider-container {
+    aspect-ratio: 1/1.45;
+  }
+  .logo {
     gap: 0.4rem;
   }
-  .logo img{
+  .logo img {
     height: 2.5rem;
     width: 2.5rem;
   }
-  .logo h2{
+  .logo h2 {
     font-size: 1.4rem;
   }
   form {
-   display: none;
+    display: none;
   }
-  .toggle-sidebar{
+  .toggle-sidebar {
     height: 2.3rem;
     width: 2.3rem;
     font-size: 1.4rem;
   }
-  .movie-preview{
+  .movie-preview {
     padding-top: 10rem;
-    padding-bottom: 6rem;
   }
-  .preview-text{
+  .preview-text {
     max-width: 80%;
   }
-  .preview-text .ratings{
+  .preview-text .ratings {
     font-size: 0.8rem;
   }
-  .watch-btn{
+  .watch-btn {
     font-size: 0.8rem;
   }
-  .slider li{
-    font-size: 0.6rem;
-  }
-  .silder .active{
-    font-size: 0.9rem;
-  }
-  .indicator{
+  .indicator {
     height: 3px;
     width: 15px;
   }
-  .top-rated{
+  .top-rated {
     padding: 0 1.5rem;
   }
   .movie-container {
@@ -573,30 +674,44 @@ footer {
     gap: 1.5rem;
     row-gap: 2rem;
   }
-  .top-rated{
+  .top-rated {
     margin-top: 2rem;
   }
-  .rated-heading{
+  .rated-heading {
     margin-bottom: 2rem;
   }
-  .rated-heading h2{
+  .rated-heading h2 {
     font-size: 1.5rem;
   }
-  .movie-card{
+  .movie-card {
     gap: 0.5rem;
   }
-  .movie-card h3{
+  .movie-card h3 {
     font-size: 1rem;
   }
-  .social-links{
+  .social-links {
     gap: 1rem;
     font-size: 1.5rem;
   }
-  .external-links{
+  .external-links {
     font-size: 0.8rem;
     gap: 0.8rem;
   }
-  .footnote{
+  .footnote {
     font-size: 0.8rem;
+  }
+}
+@media (max-width: 335px) {
+  .slider-container {
+    aspect-ratio: 1/1.7;
+  }
+  .rated-heading h2 {
+    font-size: 1.2rem;
+  }
+  .movie-container {
+    grid-template-columns: 1fr;
+  }
+  .external-links {
+    font-size: 0.7rem;
   }
 }
