@@ -10,6 +10,7 @@
 :root {
   --mainBackground: rgb(240, 243, 251);
   --sidebarBackground: white;
+  --sidebarColor: #666;
   --primaryFontFamily: "DM Sans", sans-serif;
   --secondaryFontFamily: "Poppins", sans-serif;
   --generalPadding: 3rem;
@@ -20,10 +21,11 @@
   --activeNavigationFontSize: 1.1rem;
 }
 .dark-theme {
-  /* --mainBackground: rgb(6, 6, 15); */
+  --mainBackground: rgb(16, 19, 28);
   --sidebarBackground: rgb(6, 6, 15);
   --primaryTextColor: rgb(248, 244, 244);
-  --mainBackground: rgb(16, 19, 28)
+  --sidebarColor: #939393;
+  --mainBackground: rgb(16, 19, 28);
 }
 body {
   font-family: var(--primaryFontFamily);
@@ -119,12 +121,12 @@ form .fa-magnifying-glass {
 /* SIDEBAR */
 aside {
   background: var(--sidebarBackground);
-  color: var(--primaryTextColor);
+  color: var(--sidebarColor);
   position: fixed;
   top: 0;
   left: 0;
   /* width: 14.2rem; */
-  width: 70%;
+  width: 50%;
   max-width: 19rem;
   box-shadow: 0px 0px 3px 0px rgb(49, 48, 48);
   height: 95%;
@@ -134,13 +136,13 @@ aside {
   flex-direction: column;
   align-items: start;
   gap: 3rem;
-  color: #666;
+  /* color: #666; */
   transition: transform 0.3s linear;
   transform: translateX(-150%);
 }
 @media(min-height: 700px){
   aside{
-    height: 80%;
+    height: 100%;
   }
 }
 @media(max-height: 550px){
@@ -158,6 +160,7 @@ aside .logo {
 }
 aside ul {
   position: relative;
+  /* border: 1px solid green; */
   width: 100%;
   min-height: 25rem;
   display: flex;
@@ -166,7 +169,7 @@ aside ul {
 aside ul li {
   display: flex;
   gap: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   align-items: center;
   padding: 2rem 1rem;
@@ -176,9 +179,9 @@ aside svg {
   height: 1.565rem;
 }
 .theme {
-  position: absolute;
-  bottom: 0;
-  padding: 0 1rem;
+  /* position: absolute;
+  bottom: 0; */
+  padding: 4rem 1rem;
 }
 .theme-toggle input {
   display: none;
