@@ -125,11 +125,10 @@ aside {
   position: fixed;
   top: 0;
   left: 0;
-  /* width: 14.2rem; */
-  width: 50%;
-  max-width: 19rem;
+  width: 55%;
+  max-width: 14.2rem;
   box-shadow: 0px 0px 3px 0px rgb(49, 48, 48);
-  height: 95%;
+  height: 100%;
   border-radius: 0 2em 2em 0;
   padding: 1rem 0rem;
   display: flex;
@@ -140,14 +139,8 @@ aside {
   transition: transform 0.3s linear;
   transform: translateX(-150%);
 }
-@media(min-height: 700px){
-  aside{
-    height: 100%;
-  }
-}
 @media(max-height: 550px){
   aside{
-    height: 100%;
     overflow-y: scroll;
   }
 }
