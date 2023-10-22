@@ -32,6 +32,9 @@ body {
   color: var(--primaryTextColor);
   scrollbar-gutter: stable;
 }
+.body-sidebar-padding{
+  padding-right: 17px;
+}
 button {
   background: inherit;
   border: none;
@@ -227,7 +230,7 @@ aside ul li:hover svg {
   background: rgba(0, 0, 0, 0.427);
   z-index: 100;
   display: none;
-  pointer-events: none;
+  pointer-events: auto;
 }
 /* SLIDER */
 .slider-container {
@@ -619,6 +622,9 @@ footer {
     --generalPadding: 1rem;
     --navigationFontSize: 0.7rem;
     --activeNavigationFontSize: 0.95rem;
+  }
+  .body-sidebar-padding{
+    padding-right: 0px;
   }
   .slider-container {
     aspect-ratio: 16/14;
