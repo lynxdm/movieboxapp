@@ -30,6 +30,7 @@ body {
   font-family: var(--primaryFontFamily);
   background: var(--mainBackground);
   color: var(--primaryTextColor);
+  scrollbar-gutter: stable;
 }
 button {
   background: inherit;
@@ -123,22 +124,22 @@ aside {
   color: var(--sidebarColor);
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 55%;
   max-width: 14.2rem;
   box-shadow: 0px 0px 3px 0px rgb(49, 48, 48);
   height: 100%;
-  border-radius: 0 2em 2em 0;
+  border-radius: 2em 0em 0em 2em;
   padding: 1rem 0rem;
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 3rem;
   transition: transform 0.3s linear;
-  transform: translateX(-150%);
+  transform: translateX(150%);
 }
-@media(max-height: 550px){
-  aside{
+@media (max-height: 550px) {
+  aside {
     overflow-y: scroll;
   }
 }
@@ -169,9 +170,10 @@ aside svg {
   height: 1.565rem;
 }
 .theme {
-  /* position: absolute;
-  bottom: 0; */
   padding: 4rem 1rem;
+}
+.theme p{
+  cursor: pointer;
 }
 .theme-toggle input {
   display: none;
@@ -204,7 +206,7 @@ aside svg {
 }
 aside ul li:hover {
   background: #be123d15;
-  border-right: 5px solid #be123c;
+  border-left: 5px solid #be123c;
   color: #be123c;
 }
 aside ul li:hover svg {
@@ -212,7 +214,7 @@ aside ul li:hover svg {
 }
 .theme:hover {
   background: inherit;
-  border-right: none;
+  border-left: none;
   color: inherit;
 }
 /* SLIDER */
