@@ -32,7 +32,7 @@ body {
   color: var(--primaryTextColor);
   scrollbar-gutter: stable;
 }
-.body-sidebar-padding{
+.body-sidebar-padding {
   padding-right: 17px;
 }
 button {
@@ -77,34 +77,69 @@ nav {
 .logo h2 {
   font-size: 1.5rem;
 }
+.logo-disappear {
+  display: flex;
+}
 form {
+  --searchColor: white;
+  position: relative;
+  /* z-index: 300; */
   border: 2px solid white;
   padding: 0.4rem;
   width: 33rem;
   border-radius: 0.4em;
+  transition: width 0.3s linear
 }
-.movie-form-flex {
+.expand-form{
+  z-index: 300;
+}
+form .movie-form-flex {
   width: 100%;
   display: flex;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s linear
 }
 .movie-search {
   width: 96%;
   border: none;
   background: none;
-  color: white;
+  font-size: 1.1rem;
+  color: var(--searchColor);
   user-select: none;
+}
+.show-movie-search {
+  display: block;
 }
 .movie-search:focus {
   outline: none;
+  background: white;
 }
 .movie-search::placeholder {
   font-family: var(--primaryFontFamily);
-  color: white;
+  color: var(--searchColor);
+}
+form button{
+  color: var(--searchColor);
+  font-size: 1rem;
 }
 form .fa-magnifying-glass {
   height: fit-content;
+  color: var(--searchColor);
+}
+form .clear-btn {
+  display: none;
+}
+form:focus-within {
+  --searchColor: rgb(6, 17, 32);
+  background: white;
+}
+form:focus-within .search-btn {
+  display: none;
+}
+form:focus-within .clear-btn {
+  display: block;
 }
 .toggle-sidebar {
   height: 2.3rem;
@@ -120,6 +155,9 @@ form .fa-magnifying-glass {
 }
 .toggle-sidebar:active {
   background: #d58196;
+}
+.toggle-sidebar-disappear{
+  display: block;
 }
 /* SIDEBAR */
 aside {
@@ -176,7 +214,7 @@ aside svg {
 .theme {
   padding: 4rem 1rem;
 }
-.theme p{
+.theme p {
   cursor: pointer;
 }
 .theme-toggle input {
@@ -221,7 +259,7 @@ aside ul li:hover svg {
   border-left: none;
   color: inherit;
 }
-.overlay{
+.overlay {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -438,7 +476,7 @@ aside ul li:hover svg {
   width: 100%;
   object-fit: cover;
   transition: filter 0.1s linear;
-  border-radius: 1.5em;
+  border-radius: 0.8em;
 }
 .expand {
   position: absolute;
@@ -623,7 +661,7 @@ footer {
     --navigationFontSize: 0.7rem;
     --activeNavigationFontSize: 0.95rem;
   }
-  .body-sidebar-padding{
+  .body-sidebar-padding {
     padding-right: 0px;
   }
   .slider-container {
@@ -647,14 +685,43 @@ footer {
     font-size: 1rem;
   }
 }
+@media (max-width: 500px) {
+  .logo-disappear {
+    display: none;
+  }
+  nav {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  form {
+    width: fit-content;
+    left: 15%;
+  }
+  .expand-form{
+    width: 100%;
+    left: 0
+  }
+  .movie-search {
+    font-size: 1rem;
+    width: 0;
+    position: absolute;
+  }
+  .show-movie-search {
+    width: 96%;
+    position: static;
+  }
+  .toggle-sidebar-disappear{
+    display: none;
+  }
+  .slider-container {
+    aspect-ratio: 1/1.45;
+  }
+}
 @media (max-width: 450px) {
   :root {
     --generalPadding: 1rem;
     --navigationFontSize: 0.6rem;
     --activeNavigationFontSize: 0.9rem;
-  }
-  .slider-container {
-    aspect-ratio: 1/1.45;
   }
   .logo {
     gap: 0.4rem;
@@ -665,9 +732,6 @@ footer {
   }
   .logo h2 {
     font-size: 1.4rem;
-  }
-  form {
-    display: none;
   }
   .toggle-sidebar {
     height: 2.3rem;
@@ -728,6 +792,12 @@ footer {
 @media (max-width: 335px) {
   .slider-container {
     aspect-ratio: 1/1.7;
+  }
+  form {
+    left: 10%;
+  }
+  .movie-search {
+    font-size: 0.9rem;
   }
   .rated-heading h2 {
     font-size: 1.2rem;
