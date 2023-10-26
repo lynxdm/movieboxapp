@@ -696,10 +696,12 @@ footer {
   form {
     width: fit-content;
     left: 15%;
+    border: none;
   }
   .expand-form{
     width: 100%;
-    left: 0
+    left: 0;
+    border: 2px solid white;
   }
   .movie-search {
     font-size: 1rem;
