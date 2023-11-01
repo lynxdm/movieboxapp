@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieBox | Movies</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- FONTAWESOME -->
+    <script
+      src="https://kit.fontawesome.com/6a2abf25a4.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="../src/pages/movies.js"></script>
+  </head>
+  <body>
+    <header class="movies-header">
+      <div class="overlay"></div>
+      <nav class="movies-nav">
+        <!-- LOGO -->
+        <!-- <div class="logo">
+          <img src="../image/logo.png" alt="" class="logo-img" />
+          <h2>MovieBox</h2>
+        </div> -->
+        <h2 class="page-heading">Discover Movies</h2>
+
+        <!-- SEARCH -->
+        <div class="nav-btn-flex">
+          <form class="movie-form">
+            <div class="movie-form-flex">
+              <input
+                type="text"
+                class="movie-search"
+                placeholder="Search movies..."
+              />
+              <div class="button-container">
+                <button title="search" class="search-btn" type="button">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button title="Clear" class="clear-btn" type="button">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- SUGGESTIONS -->
+            <ul class="suggestions"></ul>
+          </form>
+          <button class="genre-toggle" type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M11 18h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1zm4 6h10c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1z"
+              />
+            </svg>
+          </button>
+          <button type="button" class="toggle-sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+      <aside>
+        <div class="logo">
+          <img src="../image/logo.png" alt="" class="logo-img" />
+          <h2>MovieBox</h2>
+        </div>
+        <ul>
+          <li>
+            <!-- <i class="fa-solid fa-house"></i> -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10v9Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6H4Zm8-8.75Z"
+              />
+            </svg>
+            <p>Home</p>
+          </li>
+          <li>
+            <!-- <i class="fa-solid fa-clapperboard"></i> -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 14 14"
+            >
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="3.5" cy="3.5" r="3" />
+                <circle cx="10.5" cy="4.5" r="2" />
+                <rect width="7.5" height="4.5" x="3.5" y="9" rx="1" />
+                <path d="M13.5 10v2.5" />
+              </g>
+            </svg>
+            <p>Movies</p>
+          </li>
+          <li>
+            <i class="fa-regular fa-heart"></i>
+            <p>Bookmarks</p>
+          </li>
+          <!-- THEME TOGGLE -->
+          <li class="theme">
+            <p>Dark theme</p>
+            <button class="theme-toggle">
+              <input type="checkbox" id="switch" />
+              <label for="switch">
+                <span class="ball"></span>
+              </label>
+            </button>
+          </li>
+        </ul>
+      </aside>
+    </header>
+    <main>
+      <ul class="genre-list">
+        <li>thriller</li>
+        <li>horror</li>
+        <li>pop</li>
+        <li>bass</li>
+        <li>comedy</li>
+        <li>junk</li>
+        <li>thriller</li>
+        <li>frunk</li>
+        <li>adult</li>
+        <li>thriller</li>
+        <li>r-rated</li>
+        <li>thriller</li>
+        <li>musical</li>
+        <li>thriller</li>
+        <li>essentials</li>
+        <li>thriller</li>
+        <li>domestic</li>
+        <li>thriller</li>
+        <li>smalltime</li>
+        <li>weeed</li>
+      </ul>
+      <section class="movie-container movies-list">
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pagination-container">
+        <button type="button" class="first-page">
+          <i class="fa-solid fa-chevron-left"></i>page 1
+        </button>
+        <button type="button" class="prev-btn">
+          Back<i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <ul class="pagination-numbers">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+        <button type="button" class="next-btn">
+          Next<i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button type="button" class="last-page">
+          page 2<i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </section>
+    </main>
+    <footer>
+      <ul class="social-links">
+        <li><i class="fa-brands fa-instagram"></i></li>
+        <li><i class="fa-brands fa-x-twitter"></i></li>
+        <li><i class="fa-brands fa-linkedin-in"></i></li>
+        <li><i class="fa-brands fa-github"></i></li>
+      </ul>
+      <ul class="external-links">
+        <li>conditions of use</li>
+        <li>privacy&policy</li>
+        <li>press room</li>
+      </ul>
+      <p class="footnote">
+        &copy; 2023 MovieBox - coded by <span>lynxdev</span>
+      </p>
+    </footer>
+  </body>
+</html>
