@@ -865,6 +865,7 @@ footer {
 }
 .movies-header .nav-btn-flex form:focus-within {
   background: var(--secondaryBackground);
+  outline: 2px solid var(--tertiaryTextColor);
 }
 .movies-header .nav-btn-flex .movie-search {
   color: var(--primaryTextColor);
