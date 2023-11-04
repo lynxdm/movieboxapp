@@ -660,22 +660,24 @@
         </div>
       </section>
       <section class="pagination-container">
-        <button type="button" class="first-page">
+        <button type="button" class="first-btn page-btn">
           <i class="fa-solid fa-chevron-left"></i>page 1
         </button>
-        <button type="button" class="prev-btn"><i class="fa-solid fa-chevron-left"></i>Back
+        <button type="button" class="prev-btn page-btn">
+          <i class="fa-solid fa-chevron-left"></i>Back
         </button>
-        <ul class="pagination-numbers">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
-        <button type="button" class="next-btn">
+        <div class="pagination-numbers">
+          <button class="page-num" type="button" data-pagenum="1">1</button
+          ><button class="page-num" type="button" data-pagenum="2">2</button
+          ><button class="page-num" type="button" data-pagenum="3">3</button>
+          <!-- <button class="page-num" type="button" data-pagenum="4">4</button> -->
+          <!-- <button class="page-num" type="button" data-pagenum="5">5</button> -->
+        </div>
+        <button type="button" class="next-btn page-btn">
           Next<i class="fa-solid fa-chevron-right"></i>
         </button>
-        <button type="button" class="last-page">
-          page 2<i class="fa-solid fa-chevron-right"></i>
+        <button type="button" class="last-btn page-btn">
+          page 100<i class="fa-solid fa-chevron-right"></i>
         </button>
       </section>
     </main>

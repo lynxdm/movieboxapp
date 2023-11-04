@@ -925,49 +925,52 @@ footer {
   margin-top: 2rem;
   row-gap: 2rem;
 }
-.pagination-container{
+.pagination-container {
+  padding: 0 var(--generalPadding);
   display: flex;
   width: 100%;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   font-size: 1rem;
   text-transform: capitalize;
   color: var(--accentColor);
 }
-.pagination-container button{
-  font-size: 0.8rem;
+.pagination-container button {
+  color: var(--accentColor);
+  font-size: 1rem;
+}
+.page-btn {
   display: flex;
   align-items: center;
   gap: 0.3rem;
   text-transform: capitalize;
   border: 2px solid var(--accentColor);
   padding: 0.5rem;
-  border-radius: 1em;
+  border-radius: 1.1em;
   color: var(--accentColor);
 }
-.pagination-container button:hover{
-  background: var(--accentColor);
-  color: white;
-}
-.pagination-container button i{
+.pagination-container button i {
   font-size: 0.5rem;
 }
-.pagination-numbers{
+.pagination-numbers {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
-.pagination-numbers li {
+.page-num {
   cursor: pointer;
   padding: 0.4rem;
   border-radius: 0.7em;
 }
-.pagination-numbers li:hover{
+.page-btn:hover,
+.page-num:hover,
+.pagination-container .active {
   background-color: var(--accentColor);
   color: white;
 }
-@media(max-width: 1100px){
-   .nav-btn-flex form {
+@media (max-width: 1100px) {
+  .nav-btn-flex form {
     width: 25rem;
   }
 }
@@ -983,7 +986,7 @@ footer {
   }
 }
 @media (max-width: 900px) {
-   .page-heading {
+  .page-heading {
     font-size: 1.6rem;
   }
   .nav-btn-flex form {
@@ -1006,8 +1009,8 @@ footer {
     width: 13rem;
   }
 }
-@media(max-width: 600px) {
-  .nav-btn-flex form{
+@media (max-width: 600px) {
+  .nav-btn-flex form {
     width: 12rem;
   }
 }
