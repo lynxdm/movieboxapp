@@ -30,7 +30,6 @@ function setCurrentPage(index) {
 paginationContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("page-num")) {
     currentPageNumber = parseInt(e.target.dataset.pagenum);
-    setCurrentPage(currentPageNumber);
   } else if (e.target.classList.contains("page-btn")) {
     if (e.target.classList.contains("next-btn")) {
       if (currentPageNumber < 100) {
@@ -45,8 +44,8 @@ paginationContainer.addEventListener("click", (e) => {
     } else if (e.target.classList.contains("last-btn")) {
       currentPageNumber = 100;
     }
-    setCurrentPage(currentPageNumber);
   }
+  setCurrentPage(currentPageNumber);
 });
 
 window.addEventListener("load", () => {
