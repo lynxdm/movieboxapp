@@ -20,6 +20,7 @@
   --primaryTextColor: black;
   --secondaryTextColor: #9ca3af;
   --tertiaryTextColor: #333;
+  --thinBorderColor: #333333bc;
   --quaternaryTextColor: #222;
   --navigationFontSize: 0.8rem;
   --activeNavigationFontSize: 1.1rem;
@@ -31,6 +32,7 @@
   --sidebarBackground: rgb(6, 6, 15);
   --primaryTextColor: rgb(248, 244, 244);
   --tertiaryTextColor: rgb(248, 244, 244);
+  --thinBorderColor: rgba(248, 244, 244, 0.596);
   --quaternaryTextColor: #dee2e6;
   --sidebarColor: #939393;
 }
@@ -277,12 +279,12 @@ aside svg {
 .theme-toggle input:checked ~ label .ball {
   transform: translateX(14px);
 }
-aside ul li:hover {
+aside ul li:hover, .active-page {
   background: #be123d15;
   border-right: 5px solid #be123c;
   color: #be123c;
 }
-aside ul li:hover svg {
+aside ul li:hover svg, .active-page svg {
   color: #be123c;
 }
 .theme:hover {
@@ -577,6 +579,9 @@ footer {
   gap: 1.5rem;
   align-items: center;
   color: var(--primaryTextColor);
+  border-top: 2px solid var(--thinBorderColor);
+  width: 95%;
+  margin: 0 auto;
 }
 .social-links {
   display: flex;
@@ -899,7 +904,6 @@ footer {
   font-size: 1.6rem;
 }
 .movies-header .nav-btn-flex .expand-form {
-  width: 100%;
   border: none;
   background: inherit;
 }
@@ -932,7 +936,6 @@ footer {
   padding: 0.2rem 0.4rem;
   border-radius: 0.6em;
   text-transform: capitalize;
-  /* color: var(--tertiaryTextColor); */
   color: var(--accentColor);
   cursor: pointer;
 }
@@ -944,11 +947,13 @@ footer {
   padding: 0 var(--generalPadding);
   margin-top: 2rem;
   row-gap: 2rem;
+  margin-bottom: 2rem;
 }
 .pagination-container {
   padding: 0 var(--generalPadding);
   display: flex;
   width: 100%;
+  margin-bottom: 3rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -1058,6 +1063,9 @@ footer {
   }
   .genre-toggle i {
     font-size: 1.4rem;
+  }
+  .movies-header .nav-btn-flex .expand-form {
+    width: 100%;
   }
   .movies-header .nav-btn-flex .toggle-sidebar i {
     font-size: 1.4rem;

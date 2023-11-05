@@ -42,6 +42,7 @@ function returnToSearchDefault() {
     genreToggle.classList.remove("nav-btn-disappear");
   } else {
     searchInput.blur();
+    form.blur();
     logo.classList.remove("logo-disappear");
     form.classList.remove("expand-form");
     navBtnFlex.classList.remove("expand-nav-btn-flex");
@@ -51,22 +52,22 @@ function returnToSearchDefault() {
   }
 }
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", (e)=>{
   if (form.contains(e.target)) {
     searchInput.focus();
-    addSearchAnimation();
-  }
-});
+    addSearchAnimation();}
+  })
 
 form.addEventListener("focusout", () => {
   searchInput.blur();
   addSearchAnimation();
 });
 
-clearBtn.addEventListener("mousedown", () => {
-  if (searchInput.value) {
-    searchInput.value = "";
-  } else {
-    returnToSearchDefault();
-  }
-});
+clearBtn.addEventListener("mousedown", ()=>{
+   if (searchInput.value) {
+         searchInput.value = "";
+       } else {
+         returnToSearchDefault();
+       }
+     }
+)

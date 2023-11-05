@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieBox | Bookmarks</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- FONTAWESOME -->
+    <script
+      src="https://kit.fontawesome.com/6a2abf25a4.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="../src/pages/movies.js"></script>
+  </head>
+  <body>
+     <header class="movies-header">
+      <div class="overlay"></div>
+      <nav class="movies-nav">
+        <h2 class="page-heading">Your Bookmarks</h2>
+
+        <!-- SEARCH -->
+        <div class="nav-btn-flex">
+          <button type="button" class="toggle-sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+      <aside>
+        <a href="../index.html">
+          <div class="logo">
+            <img src="../image/logo.png" alt="" class="logo-img" />
+            <h2>MovieBox</h2>
+          </div>
+        </a>
+        <ul>
+          <a href="../index.html">
+            <li id="home">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10v9Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6H4Zm8-8.75Z"
+                />
+              </svg>
+              <p>Home</p>
+            </li>
+          </a>
+          <a href="../pages/movies.html">
+            <li id="movies">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 14 14"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="3.5" cy="3.5" r="3" />
+                  <circle cx="10.5" cy="4.5" r="2" />
+                  <rect width="7.5" height="4.5" x="3.5" y="9" rx="1" />
+                  <path d="M13.5 10v2.5" />
+                </g>
+              </svg>
+              <p>Movies</p>
+            </li>
+          </a>
+          <a href="../pages/bookmarks.html">
+            <li id="bookmarks"  class="active-page">
+              <i class="fa-regular fa-heart"></i>
+              <p>Bookmarks</p>
+            </li>
+          </a>
+          <!-- THEME TOGGLE -->
+          <li class="theme">
+            <p>Dark theme</p>
+            <button class="theme-toggle">
+              <input type="checkbox" id="switch" />
+              <label for="switch">
+                <span class="ball"></span>
+              </label>
+            </button>
+          </li>
+        </ul>
+      </aside>
+    </header>
+    <main>
+      <section class="movie-container movies-list">
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="movie-card shrink-card">
+          <div class="poster">
+            <img src="../image/Poster.png" alt="" class="poster-img" />
+            <div class="expand">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pagination-container">
+        <button type="button" class="first-btn page-btn">
+          <i class="fa-solid fa-chevron-left"></i>page 1
+        </button>
+        <button type="button" class="prev-btn page-btn">
+          <i class="fa-solid fa-chevron-left"></i>Back
+        </button>
+        <div class="pagination-numbers">
+          <button class="page-num" type="button" data-pagenum="1">1</button
+          ><button class="page-num" type="button" data-pagenum="2">2</button
+          ><button class="page-num" type="button" data-pagenum="3">3</button>
+          <!-- <button class="page-num" type="button" data-pagenum="4">4</button> -->
+          <!-- <button class="page-num" type="button" data-pagenum="5">5</button> -->
+        </div>
+        <button type="button" class="next-btn page-btn">
+          Next<i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button type="button" class="last-btn page-btn">
+          page 100<i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </section>
+    </main>
+    <footer>
+      <ul class="social-links">
+        <li><i class="fa-brands fa-instagram"></i></li>
+        <li><i class="fa-brands fa-x-twitter"></i></li>
+        <li><i class="fa-brands fa-linkedin-in"></i></li>
+        <li><i class="fa-brands fa-github"></i></li>
+      </ul>
+      <!-- <ul class="external-links">
+        <li>conditions of use</li>
+        <li>privacy&policy</li>
+        <li>press room</li>
+      </ul> -->
+      <p class="footnote">
+        &copy; 2023 MovieBox - coded by <span>lynxdev</span>
+      </p>
+    </footer>
+  </body>
+</html>

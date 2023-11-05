@@ -45,17 +45,5 @@ function returnToDefault(e) {
 document.addEventListener("mousedown", (e) => {
   if (overlay.classList.contains("show-overlay")) {
     returnToDefault(e);
-    // if (genreList) {
-    //   if (!genreList.contains(e.target) && !sidebar.contains(e.target)) {
-    //     overlay.classList.remove("show-overlay");
-    //     sidebar.classList.remove("show-sidebar");
-    //     genreList.classList.remove("show-genre-list");
-    //   }
-    // } else {
-    //   if (!sidebar.contains(e.target)) {
-    //     overlay.classList.remove("show-overlay");
-    //     sidebar.classList.remove("show-sidebar");
-    //   }
-    // }
   }
 });

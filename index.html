@@ -56,53 +56,59 @@
           </button>
        </div>
       </nav>
-      <aside>
-        <div class="logo">
-          <img src="./image/logo.png" alt="" class="logo-img" />
-          <h2>MovieBox</h2>
-        </div>
+       <aside>
+        <a href="./index.html">
+          <div class="logo">
+            <img src="./image/logo.png" alt="" class="logo-img" />
+            <h2>MovieBox</h2>
+          </div>
+        </a>
         <ul>
-          <li>
-            <!-- <i class="fa-solid fa-house"></i> -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10v9Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6H4Zm8-8.75Z"
-              />
-            </svg>
-            <p>Home</p>
-          </li>
-          <li>
-            <!-- <i class="fa-solid fa-clapperboard"></i> -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 14 14"
-            >
-              <g
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+          <a href="./index.html">
+            <li class="active-page" id="home">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
               >
-                <circle cx="3.5" cy="3.5" r="3" />
-                <circle cx="10.5" cy="4.5" r="2" />
-                <rect width="7.5" height="4.5" x="3.5" y="9" rx="1" />
-                <path d="M13.5 10v2.5" />
-              </g>
-            </svg>
-            <p>Movies</p>
-          </li>
-          <li>
-            <i class="fa-regular fa-heart"></i>
-            <p>Bookmarks</p>
-          </li>
+                <path
+                  fill="currentColor"
+                  d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10v9Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6H4Zm8-8.75Z"
+                />
+              </svg>
+              <p>Home</p>
+            </li>
+          </a>
+          <a href="./pages/movies.html">
+            <li id="movies">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 14 14"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="3.5" cy="3.5" r="3" />
+                  <circle cx="10.5" cy="4.5" r="2" />
+                  <rect width="7.5" height="4.5" x="3.5" y="9" rx="1" />
+                  <path d="M13.5 10v2.5" />
+                </g>
+              </svg>
+              <p>Movies</p>
+            </li>
+          </a>
+          <a href="./pages/bookmarks.html">
+            <li id="bookmarks">
+              <i class="fa-regular fa-heart"></i>
+              <p>Bookmarks</p>
+            </li>
+          </a>
           <!-- THEME TOGGLE -->
           <li class="theme">
             <p>Dark theme</p>
