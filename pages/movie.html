@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieBox | Movie</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- FONTAWESOME -->
+    <script
+      src="https://kit.fontawesome.com/6a2abf25a4.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="../src/pages/movie.js"></script>
+  </head>
+  <body>
+    <header class="movies-header">
+      <div class="overlay"></div>
+      <nav class="movies-nav">
+        <h2 class="page-heading">GUN RATIO</h2>
+
+        <!-- SEARCH -->
+        <div class="nav-btn-flex single-child">
+          <button type="button" class="toggle-sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+      <aside>
+        <a href="../index.html">
+          <div class="logo">
+            <img src="../image/logo.png" alt="" class="logo-img" />
+            <h2>MovieBox</h2>
+          </div>
+        </a>
+        <ul>
+          <a href="../index.html">
+            <li id="home">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10v9Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6H4Zm8-8.75Z"
+                />
+              </svg>
+              <p>Home</p>
+            </li>
+          </a>
+          <a href="../pages/movies.html">
+            <li id="movies">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 14 14"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="3.5" cy="3.5" r="3" />
+                  <circle cx="10.5" cy="4.5" r="2" />
+                  <rect width="7.5" height="4.5" x="3.5" y="9" rx="1" />
+                  <path d="M13.5 10v2.5" />
+                </g>
+              </svg>
+              <p>Movies</p>
+            </li>
+          </a>
+          <a href="../pages/bookmarks.html">
+            <li id="bookmarks">
+              <i class="fa-regular fa-heart"></i>
+              <p>Bookmarks</p>
+            </li>
+          </a>
+          <!-- THEME TOGGLE -->
+          <li class="theme">
+            <p>Dark theme</p>
+            <button class="theme-toggle">
+              <input type="checkbox" id="switch" />
+              <label for="switch">
+                <span class="ball"></span>
+              </label>
+            </button>
+          </li>
+        </ul>
+      </aside>
+    </header>
+    <main>
+      <section class="video-trailer-container">
+        <!-- <button class="cancel-btn"></button> -->
+        <div class="movie-static-container">
+          <img
+            class="movie-static-img"
+            src="../image/john-wick wallpaper.jpg"
+            alt=""
+          />
+          <div class="watch-trailer-container">
+            <button type="button" class="play-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M9.525 18.025q-.5.325-1.012.038T8 17.175V6.825q0-.6.513-.888t1.012.038l8.15 5.175q.45.3.45.85t-.45.85l-8.15 5.175Z"
+                />
+              </svg>
+            </button>
+            <p>Watch Trailer</p>
+          </div>
+          <!-- <iframe src="" frameborder="0"></iframe> -->
+        </div>
+      </section>
+      <section class="movie-details">
+        <div class="movie-details-heading">
+          <ul>
+            <li class="movie-title">gun idiot: the rise</li>
+            <li class="movie-date">2022</li>
+            <li class="movie-age-rating">PG-13</li>
+            <li class="movie-run-time">2h 10m</li>
+          </ul>
+          <button type="button" class="bookmark-movie-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M5 21V5q0-.825.588-1.413T7 3h10q.825 0 1.413.588T19 5v16l-7-3l-7 3Z"
+              />
+            </svg>
+            <p>Bookmark</p>
+          </button>
+        </div>
+        <div class="movie-details-content">
+          <ul class="movie-genre-list">
+            <li>Action</li>
+            <li>Drama</li>
+            <li>Horror</li>
+            <li>Mystery</li>
+          </ul>
+          <p class="movie-about">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse
+            placeat exercitationem beatae illo labore neque quia facere aliquam,
+            repellendus harum nesciunt tenetur sunt numquam nobis, excepturi
+            explicabo blanditiis tempora temporibus. Autem, perspiciatis ullam
+            quos magnam repellendus maxime deleniti temporibus architecto hic
+            laudantium voluptate id assumenda?
+          </p>
+          <ul class="movie-details-list">
+            <li class="directors">director: <span>joseph koinski</span></li>
+            <li class="writers">
+              writers:
+              <span>joseph koinski, peter craig, jack epps jr, jim cash</span>
+            </li>
+            <li class="stars">
+              stars: <span>joseph koinski, tom cruise, miles teller</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <ul class="social-links">
+        <li><i class="fa-brands fa-instagram"></i></li>
+        <li><i class="fa-brands fa-x-twitter"></i></li>
+        <li><i class="fa-brands fa-linkedin-in"></i></li>
+        <li><i class="fa-brands fa-github"></i></li>
+      </ul>
+      <p class="footnote">
+        &copy; 2023 MovieBox - coded by <span>lynxdev</span>
+      </p>
+    </footer>
+  </body>
+</html>

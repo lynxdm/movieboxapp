@@ -10,7 +10,7 @@ const pageHeading = document.querySelector(".page-heading");
 const navBtnFlex = document.querySelector(".nav-btn-flex");
 
 function returnToDefault(e) {
-  if (pageHeading) {
+  if (genreList) {
     if (
       !genreList.contains(e.target) &&
       !sidebar.contains(e.target) &&
@@ -28,7 +28,7 @@ function returnToDefault(e) {
       sidebar.classList.remove("show-sidebar");
       genreList.classList.remove("show-genre-list");
     }
-  } else {
+  } else if(!genreList && form) {
     if (!sidebar.contains(e.target) && !form.contains(e.target)) {
       searchInput.blur();
       logo.classList.remove("logo-disappear");
@@ -36,6 +36,11 @@ function returnToDefault(e) {
       navBtnFlex.classList.remove("expand-nav-btn-flex");
       sidebarToggle.classList.remove("nav-btn-disappear");
       searchInput.classList.remove("show-movie-search");
+      overlay.classList.remove("show-overlay");
+      sidebar.classList.remove("show-sidebar");
+    }
+  } else{
+    if (!sidebar.contains(e.target)){
       overlay.classList.remove("show-overlay");
       sidebar.classList.remove("show-sidebar");
     }
