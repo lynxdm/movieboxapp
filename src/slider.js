@@ -2,7 +2,7 @@ const slideContainer = document.querySelector(".slider-container");
 const slidesFlex = document.querySelector(".slides-flex");
 const navigation = document.querySelector(".navigation");
 
-(function slider(container, slidesFlex, navigation) {
+export const slider = (container, slidesFlex, navigation) => {
   let initialX,
     finalX,
     leftPos = -100,
@@ -16,7 +16,7 @@ const navigation = document.querySelector(".navigation");
 
   // *******EVENT LISTENERS******
   // initiate interval
-  document.addEventListener("DOMContentLoaded", createInterval);
+  createInterval();
 
   // mouse events
   container.addEventListener("mousedown", dragStart);
@@ -132,4 +132,8 @@ const navigation = document.querySelector(".navigation");
   //   // document.onmousemove = null;
   //   // document.onmouseup = null;
   // }
-})(slideContainer, slidesFlex, navigation);
+};
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   slider(slideContainer, slidesFlex, navigation);
+// });
