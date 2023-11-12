@@ -1,53 +1,64 @@
-const paginationContainer = document.querySelector(".pagination-container");
-const paginationNumbersContainer = document.querySelector(
-  ".pagination-numbers"
-);
-let pageinationButtons;
+import { fetchMovies, getLocalStorageItem } from "./utilis.js";
+import displayMovies from "./displayMovies.js";
+
 let currentPageNumber = 1;
+//  Number(getLocalStorageItem("currentPageNum"));
+export async function paginate(url) {
+  const paginationContainer = document.querySelector(".pagination-container");
+  const paginationNumbersContainer = document.querySelector(
+    ".pagination-numbers"
+  );
+  let pageinationButtons;
 
-function setCurrentPage(index) {
-  if (index >= 1) {
-    let btnArray = [];
-    for (let i = index - 2; i <= index + 2; i++) {
-      if (i >= 1 && i <= 100) {
-        btnArray.push(
-          `<button class="page-num" type="button" data-pagenum=${i}>${i}</button>`
-        );
+  paginationContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("page-num")) {
+      currentPageNumber = parseInt(e.target.dataset.pagenum);
+    } else if (e.target.classList.contains("page-btn")) {
+      if (e.target.classList.contains("next-btn")) {
+        if (currentPageNumber < 100) {
+          currentPageNumber++;
+        }
+      } else if (e.target.classList.contains("prev-btn")) {
+        if (currentPageNumber > 1) {
+          currentPageNumber--;
+        }
+      } else if (e.target.classList.contains("first-btn")) {
+        currentPageNumber = 1;
+      } else if (e.target.classList.contains("last-btn")) {
+        currentPageNumber = 100;
       }
     }
-    paginationNumbersContainer.innerHTML = btnArray.join("");
-  }
-  pageinationButtons = paginationNumbersContainer.querySelectorAll(".page-num");
-
-  pageinationButtons.forEach((btn) => {
-    btn.classList.remove("active");
-    if (btn.dataset.pagenum == index) {
-      btn.classList.add("active");
-    }
+    setCurrentPage(currentPageNumber);
   });
-}
 
-paginationContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("page-num")) {
-    currentPageNumber = parseInt(e.target.dataset.pagenum);
-  } else if (e.target.classList.contains("page-btn")) {
-    if (e.target.classList.contains("next-btn")) {
-      if (currentPageNumber < 100) {
-        currentPageNumber++;
+  window.addEventListener("load", () => {
+    setCurrentPage(currentPageNumber);
+  });
+
+  async function setCurrentPage(index = 1) {
+    if (index >= 1) {
+      let btnArray = [];
+      for (let i = index - 2; i <= index + 2; i++) {
+        if (i >= 1 && i <= 100) {
+          btnArray.push(
+            `<button class="page-num" type="button" data-pagenum=${i}>${i}</button>`
+          );
+        }
       }
-    } else if (e.target.classList.contains("prev-btn")) {
-      if (currentPageNumber > 1) {
-        currentPageNumber--;
-      }
-    } else if (e.target.classList.contains("first-btn")) {
-      currentPageNumber = 1;
-    } else if (e.target.classList.contains("last-btn")) {
-      currentPageNumber = 100;
+      paginationNumbersContainer.innerHTML = btnArray.join("");
+      let moviesData = await fetchMovies(url + `&page=${index}`);
+      displayMovies(moviesData);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      localStorage.setItem("currentPageNum", `${index}`);
     }
-  }
-  setCurrentPage(currentPageNumber);
-});
+    pageinationButtons =
+      paginationNumbersContainer.querySelectorAll(".page-num");
 
-window.addEventListener("load", () => {
-  setCurrentPage(1);
-});
+    pageinationButtons.forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.dataset.pagenum == index) {
+        btn.classList.add("active");
+      }
+    });
+  }
+}

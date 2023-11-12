@@ -88,7 +88,7 @@ header {
 }
 nav {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 .logo {
@@ -110,7 +110,7 @@ nav {
   display: flex;
   flex-grow: 0.5;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
 }
 .nav-btn-flex.single-child {
   flex-grow: 0;
@@ -160,7 +160,7 @@ form button {
   color: var(--searchColor);
   font-size: 1rem;
 }
-form .fa-magnifying-glass {
+form .movie-form-flex .fa-magnifying-glass {
   height: fit-content;
   color: var(--searchColor);
 }
@@ -176,6 +176,40 @@ form:focus-within .search-btn {
 }
 form:focus-within .clear-btn {
   display: block;
+}
+form.active-suggestion .suggestions {
+  margin-top: 1rem;
+}
+form .suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0.2rem;
+}
+form .suggestions li {
+  display: flex;
+  justify-content: space-between;
+  color: #222;
+  border-top: 1px dotted;
+  padding-top: 0.5rem;
+  gap: 2rem;
+}
+form .suggestions li p {
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.preview-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+form .suggestions li img {
+  height: 1.5rem;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.2rem;
 }
 .toggle-sidebar {
   height: 2.3rem;
@@ -543,7 +577,7 @@ aside ul li:hover svg,
   width: 100%;
   color: var(--quaternaryTextColor);
 }
-.movie-card .ratings svg{
+.movie-card .ratings svg {
   color: rgb(255, 170, 0);
   height: 1.5rem;
   width: 1.5rem;
@@ -699,7 +733,7 @@ footer {
   .watch-btn {
     font-size: 0.7rem;
   }
-   nav {
+  nav {
     justify-content: space-between;
     gap: 1rem;
   }
@@ -872,6 +906,7 @@ footer {
   font-family: var(--primaryFontFamily);
   font-size: 2rem;
   color: var(--tertiaryTextColor);
+  text-transform: capitalize;
 }
 .movies-header .nav-btn-flex form {
   border: none;
@@ -886,6 +921,9 @@ footer {
 }
 .movies-header .nav-btn-flex .movie-search:focus {
   background: var(--secondaryBackground);
+}
+.movies-header .nav-btn-flex form .suggestions li {
+  color: var(--primaryTextColor);
 }
 .movies-header .nav-btn-flex .movie-search::placeholder {
   color: var(--quaternaryTextColor);
