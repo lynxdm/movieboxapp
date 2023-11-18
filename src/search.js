@@ -1,5 +1,6 @@
-import { SEARCH_API_URL, IMG_PATH } from "./utilis.js";
+import { SEARCH_API_URL, IMG_PATH, fetchMovies } from "./utilis.js";
 
+const nav = document.querySelector("nav");
 const form = document.querySelector(".movie-form");
 const searchInput = document.querySelector(".movie-search");
 const clearBtn = document.querySelector(".clear-btn");
@@ -33,6 +34,7 @@ function returnToSearchDefault() {
   searchInput.classList.remove("show-movie-search");
   overlay.classList.remove("show-overlay");
   form.classList.remove("active-suggestion");
+  nav.classList.remove("active-suggestion");
   suggestions.innerHTML = "";
   if (pageHeading) {
     pageHeading.classList.remove("logo-disappear");
@@ -68,13 +70,20 @@ clearBtn.addEventListener("mousedown", () => {
 });
 
 const fetchSearchPreview = async (searchval) => {
-  try {
-    const response = await fetch(`${SEARCH_API_URL}&query=` + searchval);
-    let data = await response.json();
-    displaySearchPreview(data.results.slice(0, 10));
-  } catch {
-    console.log("error");
-  }
+  let data = await fetchMovies(`${SEARCH_API_URL}&query=` + searchval);
+  displaySearchPreview(data.slice(0, 8));
+
+  // try {
+  //   const response = await fetch(`${SEARCH_API_URL}&query=` + searchval);
+  //   let data = await response.json();
+  //   let movies = data.results
+  //   movies =  movies.filter(movie =>{
+
+  //   })
+  //   displaySearchPreview(data.results.slice(0, 10));
+  // } catch {
+  //   console.log("error");
+  // }
 };
 
 function displaySearchPreview(previews) {
@@ -89,14 +98,16 @@ function displaySearchPreview(previews) {
       }</li></a>`;
     })
     .join("");
-}
+  }
 
 searchInput.addEventListener("keyup", () => {
   if (searchInput.value) {
+    nav.classList.add("active-suggestion");
     form.classList.add("active-suggestion");
     fetchSearchPreview(searchInput.value);
   } else {
     form.classList.remove("active-suggestion");
+    nav.classList.remove("active-suggestion");
     suggestions.innerHTML = "";
   }
 });

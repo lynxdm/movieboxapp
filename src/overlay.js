@@ -8,6 +8,8 @@ const searchInput = document.querySelector(".movie-search");
 const logo = document.querySelector(".logo");
 const pageHeading = document.querySelector(".page-heading");
 const navBtnFlex = document.querySelector(".nav-btn-flex");
+const suggestions = document.querySelector(".suggestions");
+const nav = document.querySelector("nav");
 
 function returnToDefault(e) {
   if (genreList) {
@@ -27,8 +29,11 @@ function returnToDefault(e) {
       genreToggle.classList.remove("nav-btn-disappear");
       sidebar.classList.remove("show-sidebar");
       genreList.classList.remove("show-genre-list");
+      form.classList.remove("active-suggestion");
+      nav.classList.remove("active-suggestion");
+      suggestions.innerHTML = "";
     }
-  } else if(!genreList && form) {
+  } else if (!genreList && form) {
     if (!sidebar.contains(e.target) && !form.contains(e.target)) {
       searchInput.blur();
       logo.classList.remove("logo-disappear");
@@ -38,9 +43,12 @@ function returnToDefault(e) {
       searchInput.classList.remove("show-movie-search");
       overlay.classList.remove("show-overlay");
       sidebar.classList.remove("show-sidebar");
+      form.classList.remove("active-suggestion");
+      nav.classList.remove("active-suggestion");
+      suggestions.innerHTML = "";
     }
-  } else{
-    if (!sidebar.contains(e.target)){
+  } else {
+    if (!sidebar.contains(e.target)) {
       overlay.classList.remove("show-overlay");
       sidebar.classList.remove("show-sidebar");
     }

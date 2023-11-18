@@ -7,11 +7,12 @@ export const moviesContainer = document.querySelector(".movie-container");
 export const IMG_PATH = `https://image.tmdb.org/t/p/original`;
 export const GENRELIST_API_URL = `${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`;
 export const TOP_RATED_API_URL = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-export const MOVIE_DETAILS_PATH = `${API_URL}movie/`;
+export const MOVIE_DETAILS_PATH = `${API_URL}movie/id?append_to_response=casts%2Cvideos&language=en-US&api_key=${API_KEY}`;
 export const DISCOVER_API_URL = `${API_URL}discover/movie?api_key=${API_KEY}&language=en-US`;
 export const POPULAR_MOVIES_API_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 export const SEARCH_API_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US`;
-
+export const TRENDING_API_URL = `${API_URL}trending/movie/day?api_key=${API_KEY}&language=en-US`;
+export const GENRE_RESULT_API_URL = `${DISCOVER_API_URL}language=en-US&sort_by=popularity.desc&with_genres=`;
 export const GENRES = [
   {
     id: 28,
@@ -94,7 +95,14 @@ export const GENRES = [
 export const fetchMovies = async (url) => {
   const response = await fetch(url);
   const data = await response.json();
-  return data.results;
+  let movies = data.results;
+  movies = movies.filter((movie) => {
+    const { poster_path: poster } = movie;
+    if (poster) {
+      return movie;
+    }
+  });
+  return movies;
 };
 
 export const getLocalStorageItem = (item) => {

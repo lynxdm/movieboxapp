@@ -62,7 +62,7 @@ function displayMovies(movies) {
   console.log(movies);
   moviesContainer.innerHTML = movies
     .map((movie) => {
-      let { title, poster_path: poster, genre_ids, release_date, vote_average } = movie;
+      let { title, poster_path: poster, genre_ids, release_date, vote_average, id } = movie;
       let displayGenres = [];
       genre_ids.forEach((genre_id) => {
         GENRES.filter((genre) => {
@@ -71,7 +71,8 @@ function displayMovies(movies) {
           }
         });
       });
-      return `<div class="movie-card">
+      return ` <a href="../movie.html?id=${id}">
+      <div class="movie-card">
             <div class="poster">
               <img src=${IMG_PATH + poster} alt=${
         title + "poster image"
@@ -93,7 +94,7 @@ function displayMovies(movies) {
             </div>
             <p class="genre">${displayGenres.join(", ")}
             </p>
-          </div>`;
+          </div></a>`;
     })
     .join("");
 }

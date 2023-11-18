@@ -99,42 +99,63 @@
       </aside>
     </header>
     <main>
-      <section class="video-trailer-container">
-        <!-- <button class="cancel-btn"></button> -->
-        <div class="movie-static-container">
-          <img
-            class="movie-static-img"
-            src="../image/john-wick wallpaper.jpg"
-            alt=""
-          />
-          <div class="watch-trailer-container">
-            <button type="button" class="play-btn">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M9.525 18.025q-.5.325-1.012.038T8 17.175V6.825q0-.6.513-.888t1.012.038l8.15 5.175q.45.3.45.85t-.45.85l-8.15 5.175Z"
-                />
-              </svg>
-            </button>
-            <p>Watch Trailer</p>
+      <!-- <section class="video-trailer-container">
+        <div class="view-container">
+          <button class="cancel-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="32"
+              viewBox="0 0 384 512"
+            >
+              <path
+                fill="currentColor"
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7L86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256L41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256l105.3-105.4z"
+              />
+            </svg>
+          </button>
+          <div class="movie-static-container">
+            <img
+              class="movie-static-img"
+              src="../image/john-wick wallpaper.jpg"
+              alt=""
+            />
+            <div class="watch-trailer-container">
+              <button type="button" class="play-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M9.525 18.025q-.5.325-1.012.038T8 17.175V6.825q0-.6.513-.888t1.012.038l8.15 5.175q.45.3.45.85t-.45.85l-8.15 5.175Z"
+                  />
+                </svg>
+              </button>
+              <p>Watch Trailer</p>
+            </div>
           </div>
-          <!-- <iframe src="" frameborder="0"></iframe> -->
+          <iframe
+            class="trailer-video"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/uYPbbksJxIg"
+            title="YouTube video player"
+            frameborder="0"
+            allowfullscreen=""
+          ></iframe>
         </div>
       </section>
       <section class="movie-details">
         <div class="movie-details-heading">
           <ul>
-            <li class="movie-title">gun idiot: the rise</li>
             <li class="movie-date">2022</li>
             <li class="movie-age-rating">PG-13</li>
             <li class="movie-run-time">2h 10m</li>
           </ul>
-          <button type="button" class="bookmark-movie-btn">
+          <div class="movie-details-rating">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -143,19 +164,37 @@
             >
               <path
                 fill="currentColor"
-                d="M5 21V5q0-.825.588-1.413T7 3h10q.825 0 1.413.588T19 5v16l-7-3l-7 3Z"
+                d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"
               />
             </svg>
-            <p>Bookmark</p>
-          </button>
+            <p class="vote-average">8.5</p>
+            <p>|</p>
+            <p>350k</p>
+          </div>
         </div>
         <div class="movie-details-content">
-          <ul class="movie-genre-list">
-            <li>Action</li>
-            <li>Drama</li>
-            <li>Horror</li>
-            <li>Mystery</li>
-          </ul>
+          <div class="genre-bookmark-flex">
+            <ul class="movie-genre-list">
+              <li>Action</li>
+              <li>Drama</li>
+              <li>Horror</li>
+              <li>Mystery</li>
+            </ul>
+            <button type="button" class="bookmark-movie-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M5 21V5q0-.825.588-1.413T7 3h10q.825 0 1.413.588T19 5v16l-7-3l-7 3Z"
+                />
+              </svg>
+              <p>Bookmark</p>
+            </button>
+          </div>
           <p class="movie-about">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse
             placeat exercitationem beatae illo labore neque quia facere aliquam,
@@ -173,9 +212,21 @@
             <li class="stars">
               stars: <span>joseph koinski, tom cruise, miles teller</span>
             </li>
+            <li class="budget">Budget: <span>$93 million</span></li>
+            <li class="production-companies">
+              Production companies:
+              <span>Paramount, skydance, TC Productions</span>
+            </li>
           </ul>
+          <a
+            href="https://www.imdb.com/title/tt9603212"
+            class="imdb-link"
+            target="_blank"
+            ><p>Find out more on imdb</p>
+            <i class="fa-solid fa-chevron-right"></i
+          ></a>
         </div>
-      </section>
+      </section> -->
     </main>
     <footer>
       <ul class="social-links">
