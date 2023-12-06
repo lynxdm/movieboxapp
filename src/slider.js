@@ -45,7 +45,7 @@ export const slider = (container, slidesFlex, navigation) => {
 
   function createInterval() {
     if (!interval) {
-      interval = setInterval(animate, 5000);
+      interval = setInterval(animate, 10000);
     }
   }
 

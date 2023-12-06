@@ -106,10 +106,14 @@ export const fetchMovies = async (url) => {
 };
 
 export const getLocalStorageItem = (item) => {
-  let value = localStorage.getItem(`${item}`);
+  let value = localStorage.getItem(item);
   return value ? JSON.parse(value) : [];
 };
 
+export const setLocalStorageItem = (item, list) => {
+  // let result = getLocalStorageItem(item);
+  localStorage.setItem(item, JSON.stringify(list));
+};
 // export const API_KEY = KEY_API;
 // export const API_URL = `https://api.themoviedb.org/3/`;
 

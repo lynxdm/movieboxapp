@@ -1,13 +1,19 @@
 import "../theme.js";
 import "../sidebar.js";
 import "../overlay.js";
-import { MOVIE_DETAILS_PATH, IMG_PATH } from "../utilis.js";
+import {
+  MOVIE_DETAILS_PATH,
+  IMG_PATH,
+  setLocalStorageItem,
+  getLocalStorageItem,
+} from "../utilis.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   let params = new URLSearchParams(document.location.search);
   let id = params.get("id");
   let response = await fetch(`${MOVIE_DETAILS_PATH.replace("id", id)}`);
   let movieData = await response.json();
+  console.log(movieData);
   let {
     adult,
     backdrop_path: backdrop,
@@ -17,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     imdb_id,
     overview,
     production_companies,
+    poster_path: poster,
     title,
     release_date,
     runtime,
@@ -24,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     vote_average,
     vote_count,
   } = movieData;
-  
+
   let { cast, crew } = casts;
   function filterCrew(department, number) {
     let filter = [];
@@ -47,8 +54,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // console.log(budgetString.length);
     if (budgetString.length >= 10) {
       return `${Math.ceil(budget / 1000000000) + " billion"}`;
-    } else {
+    } else if (budgetString.length >= 7) {
       return `${Math.ceil(budget / 1000000) + " million"}`;
+    } else {
+      return `${budget}`;
     }
   }
   document.querySelector(".page-heading").innerHTML = title;
@@ -103,7 +112,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             </svg>
             <p class="vote-average">${vote_average.toPrecision(2)}</p>
             <p>|</p>
-            <p>${(vote_count / 1000).toPrecision(2)}k</p>
+            <p>${
+              vote_count.toString().length >= 4
+                ? (vote_count / 1000).toPrecision(2) + "k"
+                : vote_count
+            }</p>
           </div>
         </div>
         <div class="movie-details-content">
@@ -125,7 +138,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                   d="M5 21V5q0-.825.588-1.413T7 3h10q.825 0 1.413.588T19 5v16l-7-3l-7 3Z"
                 />
               </svg>
-              <p>Bookmark</p>
+              <p class="bookmark-text">Bookmark</p>
+              <p class="bookmarked-text">Bookmarked</p>
             </button>
           </div>
           <p class="movie-about">${overview}</p>
@@ -190,6 +204,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else if (cancelBtn.contains(e.target)) {
       viewContainer.classList.remove("show-trailer");
       main.querySelector(".trailer-video").src = "";
+    }
+  });
+
+  const bookmarkBtn = main.querySelector(".bookmark-movie-btn");
+
+  function checkBookmarks() {
+    let bookmarks = getLocalStorageItem("bookmarks");
+    let movie = bookmarks.find((bookmark) => bookmark.id === id);
+    if (movie) {
+      bookmarkBtn.classList.add("bookmarked-btn");
+    } else {
+      bookmarkBtn.classList.remove("bookmarked-btn");
+    }
+  }
+  checkBookmarks();
+
+  bookmarkBtn.addEventListener("click", () => {
+    let bookmarks = getLocalStorageItem("bookmarks");
+    // let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    // console.log(bookmarks);
+    if (!bookmarkBtn.classList.contains("bookmarked-btn")) {
+      bookmarkBtn.classList.add("bookmarked-btn");
+      let bookmarkDetails = {
+        id,
+        title,
+        poster,
+      };
+      bookmarks.push(bookmarkDetails);
+      setLocalStorageItem("bookmarks", bookmarks);
+    } else {
+      bookmarkBtn.classList.remove("bookmarked-btn");
+      let filteredBookmarks = bookmarks.filter(
+        (bookmark) => bookmark.id !== id
+      );
+      setLocalStorageItem("bookmarks", filteredBookmarks);
     }
   });
 });

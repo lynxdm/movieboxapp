@@ -31,7 +31,7 @@ function displayCarouselMovies(movies) {
     return acc;
   }, []);
   slidesFlex.innerHTML = randomMovies.map((movie) => {
-    let { title, overview, backdrop_path: backdrop, vote_average } = movie;
+    let { title, overview, backdrop_path: backdrop, vote_average, id } = movie;
     return ` <li class="movie-preview slide">
          <img
               src=${IMG_PATH + backdrop}
@@ -45,10 +45,10 @@ function displayCarouselMovies(movies) {
                     <p>${vote_average} / 10</p>
                 </div>
                 <p class="description">${overview}</p>
-                <button class="watch-btn" type="button">
+                <a href="../movie.html?id=${id}" class="watch-btn" type="button">
                   <i class="fa-solid fa-circle-play"></i>
                   <p>WATCH TRAILER</p>
-                </button>
+                </a>
               </div>
             </li>
   `;
@@ -62,7 +62,14 @@ function displayMovies(movies) {
   console.log(movies);
   moviesContainer.innerHTML = movies
     .map((movie) => {
-      let { title, poster_path: poster, genre_ids, release_date, vote_average, id } = movie;
+      let {
+        title,
+        poster_path: poster,
+        genre_ids,
+        release_date,
+        vote_average,
+        id,
+      } = movie;
       let displayGenres = [];
       genre_ids.forEach((genre_id) => {
         GENRES.filter((genre) => {
@@ -77,9 +84,6 @@ function displayMovies(movies) {
               <img src=${IMG_PATH + poster} alt=${
         title + "poster image"
       } class="poster-img" />
-              <button class="bookmark-btn">
-                <i class="fa-solid fa-heart"></i>
-              </button>
               <div class="expand">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </div>

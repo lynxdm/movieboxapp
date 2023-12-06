@@ -1,18 +1,14 @@
-import { fetchMovies, getLocalStorageItem } from "./utilis.js";
+import { fetchMovies } from "./utilis.js";
 import displayMovies from "./displayMovies.js";
+import { displayNoContent } from "./displayMovies.js";
 
-// let currentPageNumber = 1;
 export async function paginate(url, currentPageNumber = 1) {
-  console.log(url);
   const paginationContainer = document.querySelector(".pagination-container");
   const paginationNumbersContainer = document.querySelector(
     ".pagination-numbers"
   );
   let pageinationButtons;
   setCurrentPage(currentPageNumber);
-  // window.addEventListener("load", () => {
-  //   setCurrentPage(currentPageNumber);
-  // });
 
   paginationContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("page-num")) {
@@ -47,9 +43,13 @@ export async function paginate(url, currentPageNumber = 1) {
       }
       paginationNumbersContainer.innerHTML = btnArray.join("");
       let moviesData = await fetchMovies(`${url}&page=${index}`);
-      console.log(moviesData);
-      displayMovies(moviesData);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (moviesData.length > 0) {
+        displayMovies(moviesData);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        displayNoContent(`nothing like that here. Try something else:)`);
+        paginationContainer.remove();
+      }
     }
     pageinationButtons =
       paginationNumbersContainer.querySelectorAll(".page-num");
