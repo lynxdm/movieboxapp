@@ -360,6 +360,11 @@ aside ul li:hover svg,
   position: absolute;
   transition: left 2s;
 }
+.slides-flex.loading {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .slide {
   width: 20%;
 }
@@ -534,6 +539,34 @@ aside ul li:hover svg,
   column-gap: 2rem;
   margin-bottom: 5rem;
   min-height: 30rem;
+}
+.movie-container.loading {
+  place-items: center;
+  grid-template-columns: none;
+}
+.loading-spinner {
+  border: 2px solid var(--accentColor);
+  border-top: 2px solid var(--mainBackground);
+  border-right: 2px solid var(--mainBackground);
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+  opacity: 0.8;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading::backdrop {
+  position: absolute;
+  content: "please wait";
+  bottom: 0;
 }
 .movie-container.no-content {
   justify-content: center;
@@ -1161,6 +1194,13 @@ footer {
 }
 
 /* MOVIE PAGE */
+.movies-main {
+  min-height: 25rem;
+}
+.movies-main.loading {
+  display: grid;
+  place-items: center;
+}
 .video-trailer-container {
   width: 100%;
   position: relative;
@@ -1189,6 +1229,41 @@ footer {
   border-radius: 50%;
   transform: translate(30%, -30%);
   visibility: hidden;
+}
+.view-container .loading-spinner {
+  display: none;
+}
+.view-container.loading {
+  display: flex;
+  /* place-items: center; */
+  justify-content: center;
+}
+.view-container.loading .movie-static-container {
+  width: 100%;
+}
+.view-container.loading .movie-static-container img {
+  filter: brightness(20%);
+}
+.view-container.loading .loading-spinner {
+  display: block;
+  position: absolute;
+  align-self: center;
+  z-index: 100;
+  border: 2px solid var(--accentColor);
+  border-top: 2px solid #66666600;
+  border-right: 2px solid #66666600;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+  opacity: 0.8;
+}
+.view-container.loading .watch-trailer-container {
+  display: none;
+}
+.view-container.loading .cancel-btn {
+  visibility: visible;
+  z-index: 20;
 }
 .view-container.show-trailer .cancel-btn {
   visibility: visible;

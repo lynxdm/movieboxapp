@@ -1,7 +1,6 @@
 import "../theme.js";
 import "../sidebar.js";
 import { slider } from "../slider.js";
-// import "../slider.js";
 import "../search.js";
 import "../overlay.js";
 import {
@@ -15,7 +14,6 @@ const slidesFlex = document.querySelector(".slides-flex");
 const slideContainer = document.querySelector(".slider-container");
 const navigation = document.querySelector(".navigation");
 function displayCarouselMovies(movies) {
-  console.log(movies);
   let randomMovies = [];
   for (let i = 0; i < 10; i++) {
     let randomIndex = Math.floor(Math.random() * movies.length);
@@ -104,7 +102,10 @@ function displayMovies(movies) {
 }
 
 const start = async () => {
-  let moviesData = await fetchMovies(POPULAR_MOVIES_API_URL);
+  let moviesData = await fetchMovies(
+    POPULAR_MOVIES_API_URL,
+    "There was an error, please try again :("
+  );
   displayCarouselMovies(moviesData);
   displayMovies(moviesData);
 };

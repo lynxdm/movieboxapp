@@ -92,17 +92,47 @@ export const GENRES = [
   },
 ];
 
-export const fetchMovies = async (url) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  let movies = data.results;
-  movies = movies.filter((movie) => {
-    const { poster_path: poster } = movie;
-    if (poster) {
-      return movie;
+const slidesFlex = document.querySelector(".slides-flex");
+
+export const displayLoading = (container) => {
+  container.classList.add("loading");
+  container.innerHTML = `<div class="loading-spinner"></div>`;
+};
+
+const determineContainerAndAddLoading = () => {
+  if (moviesContainer) {
+    displayLoading(moviesContainer);
+  }
+  if (slidesFlex) {
+    displayLoading(slidesFlex);
+  }
+};
+
+export const fetchMovies = async (url, errorText) => {
+  determineContainerAndAddLoading();
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    let movies = data.results;
+    movies = movies.filter((movie) => {
+      const { poster_path: poster } = movie;
+      if (poster) {
+        return movie;
+      }
+    });
+    if (slidesFlex) {
+      slidesFlex.classList.remove("loading");
     }
-  });
-  return movies;
+    moviesContainer.classList.remove("loading");
+    return movies;
+  } catch {
+    if (slidesFlex) {
+      slidesFlex.classList.remove("loading");
+    }
+    moviesContainer.classList.remove("loading");
+    moviesContainer.innerHTML = `<h2 class="no-content-text">${errorText}</h2>`;
+    moviesContainer.classList.add("no-content");
+  }
 };
 
 export const getLocalStorageItem = (item) => {
