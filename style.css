@@ -459,23 +459,6 @@ aside ul li:hover svg,
   top: 50%;
   right: 2rem;
 }
-/* ON CHECKED */
-/* #radio1:checked ~ .slides-flex{
-  left: 0;
-}
-#radio2:checked ~ .slides-flex{
-  left: -100%;
-}
-#radio3:checked ~ .slides-flex{
-  left: -200%;
-}
-#radio4:checked ~ .slides-flex{
-  left: -300%;
-}
-#radio5:checked ~ .slides-flex{
-  left: -400%;
-}*/
-
 #radio1:checked ~ .navigation {
   transform: translateY(-10%);
 }
@@ -844,7 +827,7 @@ footer {
     --activeNavigationFontSize: 0.9rem;
   }
   .slider-container {
-    height: 90dvh;
+    height: 95vh;
   }
   .logo {
     gap: 0.4rem;
