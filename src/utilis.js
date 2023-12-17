@@ -1,4 +1,4 @@
-export const API_KEY = "b8153e3c30f5a9478f55d8ab9c8ddff9";
+import { API_KEY } from "./config.js";
 export const API_URL = "https://api.themoviedb.org/3/";
 export const ACCESS_TOKEN =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODE1M2UzYzMwZjVhOTQ3OGY1NWQ4YWI5YzhkZGZmOSIsInN1YiI6IjY0ZmY2YzljZWZlYTdhMDBjMzk2MzZmYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CGjCPWVoGOpY0bqOjno6UBwQkWyPiO-rDdPQ8EG7ywI";
@@ -7,7 +7,8 @@ export const moviesContainer = document.querySelector(".movie-container");
 export const IMG_PATH = `https://image.tmdb.org/t/p/original`;
 export const GENRELIST_API_URL = `${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`;
 export const TOP_RATED_API_URL = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-export const MOVIE_DETAILS_PATH = `${API_URL}movie/id?append_to_response=casts%2Cvideos&language=en-US&api_key=${API_KEY}`;
+export const MOVIE_DETAILS_PATH = `${API_URL}movie/id?append_to_response=casts%2Cvideos%2Crelease_dates&language=en-US&api_key=${API_KEY}`;
+export const MOVIE_CERTIFICATION_PATH = `${API_URL}certification/movie/list?api_key=${API_KEY}`;
 export const DISCOVER_API_URL = `${API_URL}discover/movie?api_key=${API_KEY}&language=en-US`;
 export const POPULAR_MOVIES_API_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 export const SEARCH_API_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US`;
@@ -124,6 +125,7 @@ export const fetchMovies = async (url, errorText) => {
       slidesFlex.classList.remove("loading");
     }
     moviesContainer.classList.remove("loading");
+    // let results = [movies, data.total_pages];
     return movies;
   } catch {
     if (slidesFlex) {

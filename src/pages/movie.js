@@ -13,58 +13,66 @@ document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
   let params = new URLSearchParams(document.location.search);
   let id = params.get("id");
-  displayLoading(main);
-  let response = await fetch(`${MOVIE_DETAILS_PATH.replace("id", id)}`);
-  let movieData = await response.json();
-  let {
-    adult,
-    backdrop_path: backdrop,
-    budget,
-    casts,
-    genres,
-    imdb_id,
-    overview,
-    production_companies,
-    poster_path: poster,
-    title,
-    release_date,
-    runtime,
-    videos,
-    vote_average,
-    vote_count,
-  } = movieData;
 
-  let { cast, crew } = casts;
-  function filterCrew(department, number) {
-    let filter = [];
-    crew.filter((crew) => {
-      if (crew.department == department) {
-        filter.push(crew.name);
-      }
-    });
-    return filter.splice(0, number).join(", ");
-  }
+  try {
+    displayLoading(main);
+    let response = await fetch(`${MOVIE_DETAILS_PATH.replace("id", id)}`);
+    let movieData = await response.json();
+    let {
+      adult,
+      backdrop_path: backdrop,
+      budget,
+      casts,
+      genres,
+      imdb_id,
+      overview,
+      production_companies,
+      poster_path: poster,
+      title,
+      release_date,
+      runtime,
+      videos,
+      vote_average,
+      vote_count,
+      release_dates,
+    } = movieData;
 
-  function convertTime(min) {
-    let hours = Math.floor(min / 60);
-    let minutes = min % 60;
-    return `${hours}h ${minutes}m`;
-  }
+    let USrating = release_dates.results.find(
+      (item) => item.iso_3166_1 === "US"
+    ).release_dates[0].certification;
+    console.log(USrating);
 
-  function convertBudget(budget) {
-    let budgetString = budget.toString();
-    // console.log(budgetString.length);
-    if (budgetString.length >= 10) {
-      return `${Math.ceil(budget / 1000000000) + " billion"}`;
-    } else if (budgetString.length >= 7) {
-      return `${Math.ceil(budget / 1000000) + " million"}`;
-    } else {
-      return `${budget}`;
+    let { cast, crew } = casts;
+    function filterCrew(department, number) {
+      let filter = [];
+      crew.filter((crew) => {
+        if (crew.department == department) {
+          filter.push(crew.name);
+        }
+      });
+      return filter.splice(0, number).join(", ");
     }
-  }
-  document.querySelector(".page-heading").innerHTML = title;
-  main.classList.remove("loading");
-  main.innerHTML = `<section class="video-trailer-container">
+
+    function convertTime(min) {
+      let hours = Math.floor(min / 60);
+      let minutes = min % 60;
+      return `${hours}h ${minutes}m`;
+    }
+
+    function convertBudget(budget) {
+      let budgetString = budget.toString();
+      // console.log(budgetString.length);
+      if (budgetString.length >= 10) {
+        return `${Math.ceil(budget / 1000000000) + " billion"}`;
+      } else if (budgetString.length >= 7) {
+        return `${Math.ceil(budget / 1000000) + " million"}`;
+      } else {
+        return `${budget}`;
+      }
+    }
+    document.querySelector(".page-heading").innerHTML = title;
+    main.classList.remove("loading");
+    main.innerHTML = `<section class="video-trailer-container">
        <div class="view-container">
            <button class="cancel-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 384 512"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7L86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256L41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256l105.3-105.4z"/></svg></button>
           <div class="loading-spinner"></div>
@@ -98,7 +106,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="movie-details-heading">
           <ul>
             <li class="movie-date">${release_date.slice(0, 4)}</li>
-            <li class="movie-age-rating">${adult ? "R-rated" : "PG-13"}</li>
+            <li class="movie-age-rating">Rated: ${
+              USrating ? USrating : "no-rating"
+            }</li>
             <li class="movie-run-time">${convertTime(runtime)}</li>
           </ul>
           <div class="movie-details-rating">
@@ -185,73 +195,75 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       </section>`;
 
-  const playBtn = main.querySelector(".play-btn");
-  const viewContainer = main.querySelector(".view-container");
-  const cancelBtn = main.querySelector(".cancel-btn");
+    const playBtn = main.querySelector(".play-btn");
+    const viewContainer = main.querySelector(".view-container");
+    const cancelBtn = main.querySelector(".cancel-btn");
 
-  let vids = videos.results;
-  let trailers = vids.reduce((acc, video) => {
-    if (video.type == "Trailer") {
-      acc.push(video.key);
+    let vids = videos.results;
+    let trailers = vids.reduce((acc, video) => {
+      if (video.type == "Trailer") {
+        acc.push(video.key);
+      }
+      return acc;
+    }, []);
+
+    let trailer = trailers.slice(0, 1).join("");
+    viewContainer.addEventListener("click", (e) => {
+      if (playBtn.contains(e.target)) {
+        viewContainer.classList.add("loading");
+        main.querySelector(
+          ".trailer-video"
+        ).src = `https://www.youtube.com/embed/${trailer}`;
+        main.querySelector(".trailer-video").onload = () => {
+          viewContainer.classList.remove("loading");
+          viewContainer.classList.add("show-trailer");
+        };
+        // main.querySelector(".trailer-video").addEventListener("load", () => {
+        //   viewContainer.classList.remove("loading");
+        //   viewContainer.classList.add("show-trailer");
+        //   console.log("hey");
+        // });
+      } else if (cancelBtn.contains(e.target)) {
+        viewContainer.classList.remove("show-trailer");
+        main.querySelector(".trailer-video").src = "";
+        main.querySelector(".trailer-video").onload = "";
+      }
+    });
+
+    const bookmarkBtn = main.querySelector(".bookmark-movie-btn");
+
+    function checkBookmarks() {
+      let bookmarks = getLocalStorageItem("bookmarks");
+      let movie = bookmarks.find((bookmark) => bookmark.id === id);
+      if (movie) {
+        bookmarkBtn.classList.add("bookmarked-btn");
+      } else {
+        bookmarkBtn.classList.remove("bookmarked-btn");
+      }
     }
-    return acc;
-  }, []);
+    checkBookmarks();
 
-  let trailer = trailers.slice(0, 1).join("");
-  viewContainer.addEventListener("click", (e) => {
-    if (playBtn.contains(e.target)) {
-      viewContainer.classList.add("loading");
-      main.querySelector(
-        ".trailer-video"
-      ).src = `https://www.youtube.com/embed/${trailer}`;
-      main.querySelector(".trailer-video").onload = () => {
-        viewContainer.classList.remove("loading");
-        viewContainer.classList.add("show-trailer");
-      };
-      // main.querySelector(".trailer-video").addEventListener("load", () => {
-      //   viewContainer.classList.remove("loading");
-      //   viewContainer.classList.add("show-trailer");
-      //   console.log("hey");
-      // });
-    } else if (cancelBtn.contains(e.target)) {
-      viewContainer.classList.remove("show-trailer");
-      main.querySelector(".trailer-video").src = "";
-      main.querySelector(".trailer-video").onload = "";
-    }
-  });
-
-  const bookmarkBtn = main.querySelector(".bookmark-movie-btn");
-
-  function checkBookmarks() {
-    let bookmarks = getLocalStorageItem("bookmarks");
-    let movie = bookmarks.find((bookmark) => bookmark.id === id);
-    if (movie) {
-      bookmarkBtn.classList.add("bookmarked-btn");
-    } else {
-      bookmarkBtn.classList.remove("bookmarked-btn");
-    }
+    bookmarkBtn.addEventListener("click", () => {
+      let bookmarks = getLocalStorageItem("bookmarks");
+      if (!bookmarkBtn.classList.contains("bookmarked-btn")) {
+        bookmarkBtn.classList.add("bookmarked-btn");
+        let bookmarkDetails = {
+          id,
+          title,
+          poster,
+        };
+        bookmarks.push(bookmarkDetails);
+        setLocalStorageItem("bookmarks", bookmarks);
+      } else {
+        bookmarkBtn.classList.remove("bookmarked-btn");
+        let filteredBookmarks = bookmarks.filter(
+          (bookmark) => bookmark.id !== id
+        );
+        setLocalStorageItem("bookmarks", filteredBookmarks);
+      }
+    });
+  } catch {
+    main.innerHTML = `<h2 class="no-content-text">There was a problem loading the page. Please <a href="../movie.html?id=${id}">try again</a></h2>`;
+    main.classList.add("no-content");
   }
-  checkBookmarks();
-
-  bookmarkBtn.addEventListener("click", () => {
-    let bookmarks = getLocalStorageItem("bookmarks");
-    // let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-    // console.log(bookmarks);
-    if (!bookmarkBtn.classList.contains("bookmarked-btn")) {
-      bookmarkBtn.classList.add("bookmarked-btn");
-      let bookmarkDetails = {
-        id,
-        title,
-        poster,
-      };
-      bookmarks.push(bookmarkDetails);
-      setLocalStorageItem("bookmarks", bookmarks);
-    } else {
-      bookmarkBtn.classList.remove("bookmarked-btn");
-      let filteredBookmarks = bookmarks.filter(
-        (bookmark) => bookmark.id !== id
-      );
-      setLocalStorageItem("bookmarks", filteredBookmarks);
-    }
-  });
 });

@@ -28,9 +28,16 @@ function displayCarouselMovies(movies) {
     }
     return acc;
   }, []);
-  slidesFlex.innerHTML = randomMovies.map((movie) => {
-    let { title, overview, backdrop_path: backdrop, vote_average, id } = movie;
-    return ` <li class="movie-preview slide">
+  slidesFlex.innerHTML = randomMovies
+    .map((movie) => {
+      let {
+        title,
+        overview,
+        backdrop_path: backdrop,
+        vote_average,
+        id,
+      } = movie;
+      return `<li class="movie-preview slide">
          <img
               src=${IMG_PATH + backdrop}
               alt="${title + " backdrop"}"
@@ -48,16 +55,15 @@ function displayCarouselMovies(movies) {
                   <p>WATCH TRAILER</p>
                 </a>
               </div>
-            </li>
-  `;
-  });
+            </li>`;
+    })
+    .join("");
   slider(slideContainer, slidesFlex, navigation);
 }
 
 const moviesContainer = document.querySelector(".movie-container");
 
 function displayMovies(movies) {
-  console.log(movies);
   moviesContainer.innerHTML = movies
     .map((movie) => {
       let {

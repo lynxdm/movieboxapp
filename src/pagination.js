@@ -42,14 +42,18 @@ export async function paginate(url, currentPageNumber = 1) {
         }
       }
       paginationNumbersContainer.innerHTML = btnArray.join("");
-      let moviesData = await fetchMovies(`${url}&page=${index}`);
-      if (moviesData.length > 0) {
-        displayMovies(moviesData);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        displayNoContent(`nothing like that here. Try something else:)`);
-        paginationContainer.remove();
-      }
+      let moviesData = await fetchMovies(
+        `${url}&page=${index}`,
+        `error retrieving data, Please <a href="${url}&page=${index}">try again</a>`
+      );
+      displayMovies(moviesData);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // if (moviesData.length > 0) {
+
+      // } else {
+      //   displayNoContent(`nothing like that here. Try something else:)`);
+      //   paginationContainer.remove();
+      // }
     }
     pageinationButtons =
       paginationNumbersContainer.querySelectorAll(".page-num");

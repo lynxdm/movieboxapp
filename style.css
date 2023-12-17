@@ -649,28 +649,6 @@ aside ul li:hover svg,
   font-size: 0.8rem;
   color: var(--secondaryTextColor);
 }
-/* .bookmark-btn {
-  position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  display: grid;
-  place-items: center;
-  background: rgba(243, 244, 246, 0.5);
-  color: #d1d5db;
-  transition: all 0.1s linear;
-}
-.bookmark-btn:focus {
-  background: rgba(215, 107, 107, 0.777);
-  color: #be1212f1;
-}
-.bookmarked {
-  background: rgba(215, 107, 107, 0.777);
-  color: #be1212f1;
-} */
 .movie-card:hover .poster-img {
   filter: brightness(50%);
 }
@@ -865,6 +843,9 @@ footer {
     --navigationFontSize: 0.6rem;
     --activeNavigationFontSize: 0.9rem;
   }
+  .slider-container {
+    height: 90dvh;
+  }
   .logo {
     gap: 0.4rem;
   }
@@ -936,7 +917,7 @@ footer {
 }
 @media (max-width: 350px) {
   .slider-container {
-    aspect-ratio: 1/1.9;
+    height: 100dvh;
   }
   .movie-search {
     font-size: 0.9rem;
