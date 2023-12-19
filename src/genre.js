@@ -6,7 +6,6 @@ import {
 } from "./utilis.js";
 
 import { paginate } from "./pagination.js";
-import displayMovies from "./displayMovies.js";
 
 const genreToggle = document.querySelector(".genre-toggle");
 const genreList = document.querySelector(".genre-list");
@@ -15,7 +14,6 @@ genreToggle.addEventListener("click", () => {
   if (!genreList.classList.contains("show-genre-list")) {
     genreList.classList.add("show-genre-list");
     document.querySelector(".overlay").classList.add("show-overlay");
-    // renderGenreList();
   } else {
     genreList.classList.remove("show-genre-list");
     document.querySelector(".overlay").classList.remove("show-overlay");
@@ -36,7 +34,6 @@ export function renderGenreList() {
       if (!btn.classList.contains("active-filter")) {
         btn.classList.add("active-filter");
         currentFilter.push(btn.dataset.genreId);
-        console.log(currentFilter);
       } else {
         btn.classList.remove("active-filter");
         currentFilter = currentFilter.filter((item) => {
@@ -44,27 +41,15 @@ export function renderGenreList() {
             return item;
           }
         });
-        console.log(currentFilter);
       }
       let currentFilterURL = encodeURIComponent(currentFilter.join(", "));
 
       if (currentFilterURL.length > 1) {
-        console.log(currentFilterURL);
-        // let data = await fetchMovies(
-        //   `${GENRE_RESULT_API_URL}${currentFilterURL}&page=${2}`
-        // );
-        // displayMovies(data);
+        document.querySelector(".page-heading").innerHTML = `Popular Movies`;
         paginate(`${GENRE_RESULT_API_URL}${currentFilterURL}`);
       } else {
-        console.log("hey");
-        // paginate(DISCOVER_API_URL);
         fetchMovies(DISCOVER_API_URL);
       }
-      // if (currentFilter) {
-      //   let currentFilterURL = encodeURIComponent(currentFilter.join(", "));
-      //   console.log(currentFilterURL);
-      //   ;
-      // }
     });
   });
 }

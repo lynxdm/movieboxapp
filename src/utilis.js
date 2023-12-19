@@ -109,7 +109,20 @@ const determineContainerAndAddLoading = () => {
   }
 };
 
-export const fetchMovies = async (url, errorText) => {
+export const fetchSuggestions = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  let movies = data.results;
+  movies = movies.filter((movie) => {
+    const { poster_path: poster } = movie;
+    if (poster) {
+      return movie;
+    }
+  });
+  return movies;
+};
+
+export const fetchMovies = async (url) => {
   determineContainerAndAddLoading();
   try {
     const response = await fetch(url);
@@ -125,14 +138,13 @@ export const fetchMovies = async (url, errorText) => {
       slidesFlex.classList.remove("loading");
     }
     moviesContainer.classList.remove("loading");
-    // let results = [movies, data.total_pages];
     return movies;
   } catch {
     if (slidesFlex) {
       slidesFlex.classList.remove("loading");
     }
     moviesContainer.classList.remove("loading");
-    moviesContainer.innerHTML = `<h2 class="no-content-text">${errorText}</h2>`;
+    moviesContainer.innerHTML = `<h2 class="no-content-text">There was a problem loading the page. Please try again</h2>`;
     moviesContainer.classList.add("no-content");
   }
 };

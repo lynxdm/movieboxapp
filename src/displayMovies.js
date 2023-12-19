@@ -6,6 +6,10 @@ import {
 } from "./utilis.js";
 
 export default function displayMovies(movies) {
+  if (movies.length < 1) {
+    displayNoContent("nothing matches your search. Please try something else.");
+    return;
+  }
   moviesContainer.innerHTML = movies
     .map((movie) => {
       let { id, poster_path: poster, title } = movie;

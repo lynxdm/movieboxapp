@@ -1,4 +1,4 @@
-import { SEARCH_API_URL, IMG_PATH, fetchMovies } from "./utilis.js";
+import { SEARCH_API_URL, IMG_PATH, fetchSuggestions } from "./utilis.js";
 
 const nav = document.querySelector("nav");
 const form = document.querySelector(".movie-form");
@@ -53,9 +53,6 @@ form.addEventListener("focusout", (e) => {
   if (!suggestions.contains(e.target)) {
     searchInput.blur();
     addSearchAnimation();
-    // form.classList.remove("active-suggestion");
-    // suggestions.innerHTML = "";
-  } else {
   }
 });
 
@@ -70,20 +67,8 @@ clearBtn.addEventListener("mousedown", () => {
 });
 
 const fetchSearchPreview = async (searchval) => {
-  let data = await fetchMovies(`${SEARCH_API_URL}&query=` + searchval);
+  let data = await fetchSuggestions(`${SEARCH_API_URL}&query=` + searchval);
   displaySearchPreview(data.slice(0, 8));
-
-  // try {
-  //   const response = await fetch(`${SEARCH_API_URL}&query=` + searchval);
-  //   let data = await response.json();
-  //   let movies = data.results
-  //   movies =  movies.filter(movie =>{
-
-  //   })
-  //   displaySearchPreview(data.results.slice(0, 10));
-  // } catch {
-  //   console.log("error");
-  // }
 };
 
 function displaySearchPreview(previews) {
@@ -98,7 +83,7 @@ function displaySearchPreview(previews) {
       }</li></a>`;
     })
     .join("");
-  }
+}
 
 searchInput.addEventListener("keyup", () => {
   if (searchInput.value) {

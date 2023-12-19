@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     pageHeading.innerHTML = `${decodeURIComponent(query)}`;
     pageinationContainer.style.display = "none";
     let searchData = await fetchMovies(
-      `${SEARCH_API_URL + "&query="}${query}}&page=1`,
-      "nothing matches your search. Please try something else."
+      `${SEARCH_API_URL + "&query="}${query}}&page=1`
     );
     displayMovies(searchData);
   } else {
