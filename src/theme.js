@@ -1,7 +1,11 @@
 const themeToggle = document.querySelector(".theme-toggle label");
 const theme = document.querySelector(".theme");
 
-document.addEventListener("DOMContentLoaded", retrieveTheme);
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("dark-theme");
+  // localStorage.setItem("theme", "dark-theme");
+  retrieveTheme();
+});
 theme.addEventListener("click", () => {
   // add theme class to body
   if (!document.body.classList.contains("dark-theme")) {
@@ -27,8 +31,8 @@ themeToggle.addEventListener("click", () => {
 
 function retrieveTheme() {
   let theme = localStorage.getItem("theme");
-  if (theme) {
-    document.body.classList.add("dark-theme");
-    document.querySelector(".theme-toggle input").checked = true;
+  if (!theme) {
+    document.body.classList.remove("dark-theme");
+    document.querySelector(".theme-toggle input").checked = false;
   }
 }
