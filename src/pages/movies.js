@@ -2,6 +2,7 @@ import "../theme.js";
 import "../sidebar.js";
 import "../search.js";
 import "../genre.js";
+import "../date.js";
 import "../overlay.js";
 import "../pagination.js";
 import { DISCOVER_API_URL, SEARCH_API_URL, fetchMovies } from "../utilis.js";

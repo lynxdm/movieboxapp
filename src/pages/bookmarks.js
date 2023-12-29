@@ -1,6 +1,7 @@
 import "../theme.js";
 import "../sidebar.js";
 import "../overlay.js";
+import "../date.js";
 import { getLocalStorageItem } from "../utilis.js";
 import { displayBookmarks, displayNoContent } from "../displayMovies.js";
 

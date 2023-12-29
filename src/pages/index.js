@@ -3,6 +3,7 @@ import "../sidebar.js";
 import { slider } from "../slider.js";
 import "../search.js";
 import "../overlay.js";
+import "../date.js";
 import {
   IMG_PATH,
   GENRES,
