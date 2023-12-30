@@ -1,5 +1,6 @@
 # MovieBox
-MovieBox is a website that consumes the TMDB API and allows you to search for your favorite movies, watch their trailers, and bookmark it for later.
+
+MovieBox is a website that consumes the [TMDB API](https://www.themoviedb.org/) and allows you to search for your favorite movies, watch their trailers, and bookmark it for later.
 Live link [here](https://movieboxapp.netlify.app/).
 
 ## Features
@@ -9,7 +10,7 @@ Live link [here](https://movieboxapp.netlify.app/).
 - Watch your movie trailers through youtube embeds.
 - Bookmarking functionailty.
 - Light and dark mode toggler.
- 
+
 ## Screenshots
 
 ![Homepage](https://github.com/lynxdm/movieboxapp/assets/78499862/43d0f054-769a-4b17-b65a-36519a4ba95a)
@@ -23,4 +24,5 @@ Live link [here](https://movieboxapp.netlify.app/).
 ![Bookmarks page](https://github.com/lynxdm/movieboxapp/assets/78499862/b442e10b-8f6d-498c-a8ad-baf5b1fdc6b1)
 
 ## Feedbacks
-For any feedbacks at all, send me an email at lynxdev32@gmail.com
+
+For any feedbacks at all, send me an email at lynxdev32@gmail.com.
